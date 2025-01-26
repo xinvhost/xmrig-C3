@@ -1,12 +1,37 @@
 # XMRig
 
-[![Github All Releases](https://img.shields.io/github/downloads/xmrig/xmrig/total.svg)](https://github.com/C3Pool/xmrig/releases)
-[![GitHub release](https://img.shields.io/github/release/xmrig/xmrig/all.svg)](https://github.com/C3Pool/xmrig/releases)
-[![GitHub Release Date](https://img.shields.io/github/release-date/xmrig/xmrig.svg)](https://github.com/C3Pool/xmrig/releases)
-[![GitHub license](https://img.shields.io/github/license/xmrig/xmrig.svg)](https://github.com/C3Pool/xmrig/blob/master/LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/xmrig/xmrig.svg)](https://github.com/C3Pool/xmrig/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/xmrig/xmrig.svg)](https://github.com/C3Pool/xmrig/network)
+【以下是我改动的文档】
+XMRig-C3pool猫池去捐赠抽水版本-可自己编译版
 
+【相对于官方的改动如下】
+src/donate.h 文件的 kMinimumDonateLevel和kDefaultDonateLevel修改为0
+src/net/strategies/DonateStrategy.cpp 文件中 donate_user 捐赠地址改为自己的xmr钱包地址（编译时自己改为自己的即可），其实这里不改也行，只是改个安心
+/src/base/net/stratum/Pools.cpp中158行的猫池域名判断语句删除，并加一句直接赋值mo = true; 使得判断条件永远为真
+
+【自己编译步骤】
+建议在ubuntu16上编译以兼容低版本的系统
+sudo apt install git build-essential cmake automake libtool autoconf
+git clone https://github.com/C3Pool/xmrig-C3.git
+cd xmrig-C3/
+
+去掉捐赠：
+编辑src/donate.h 文件的 kMinimumDonateLevel和kDefaultDonateLevel修改为0
+编辑src/net/strategies/DonateStrategy.cpp 文件中 donate_user地址改为自己的xmr钱包地址
+编辑src/base/net/stratum/Pools.cpp中158行的域名判断语句删除，并加一句直接赋值mo = true;
+
+在 xmrig-C3/目录下执行以下命令
+mkdir build && chmod -R +x ./ && cd scripts 
+./build_deps.sh && cd ../build
+cmake .. -DXMRIG_DEPS=scripts/deps
+如果此处报错，大概率是使用的低版本的系统编译使得openssl版本不兼容，可进入目录xmrig-C3/scripts/执行./build.openssl.sh安装openssl 1版本，完成后进入xmrig-C3/build/再执行cmake .. -DXMRIG_DEPS=scripts/deps 完成后再执行后面的编译命令
+make -j$(nproc)
+编译完后检查依赖是否正确 ldd xmrig
+完成后可在xmrig-C3/build/看到编译好的 xmrig 文件。
+
+【编译参数】如果有特殊需求，可参考：https://xmrig.com/docs/miner/cmake-options
+
+
+【以下是官方xmrig-c3的官方文档】
 XMRig is a high performance, open source, cross platform RandomX, KawPow, CryptoNight and [GhostRider](https://github.com/xmrig/xmrig/tree/master/src/crypto/ghostrider#readme) unified CPU/GPU miner and [RandomX benchmark](https://xmrig.com/benchmark). Official binaries are available for Windows, Linux, macOS and FreeBSD.
 
 ## Mining backends
