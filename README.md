@@ -24,7 +24,7 @@ u22:在ubuntu22上编译（已测试兼容ubuntu22+,debian11,其他系统自行�
 
 懒人直接运行以下命令下载解压
 
-wget https://github.com/xinvhost/xmrig-C3/releases/xmrig-c3-u16.tar.gz && tar -zxvf xmrig-c3-u16.tar.gz
+wget https://github.com/xinvhost/xmrig-C3/releases/download/linux/xmrig-c3-u16.tar.gz && tar -zxvf xmrig-c3-u16.tar.gz
 
 然后修改config.json文件中的参数：
 
