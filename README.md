@@ -5,7 +5,7 @@
 XMRig-C3pool猫池去捐赠抽水版本-可自己编译版
 
 
-##【相对于官方的改动如下】
+## 【相对于官方的改动如下】
 
 src/donate.h 文件的 kMinimumDonateLevel和kDefaultDonateLevel修改为0
 
@@ -14,7 +14,7 @@ src/net/strategies/DonateStrategy.cpp 文件中 donate_user 捐赠地址改为�
 /src/base/net/stratum/Pools.cpp中158行的猫池域名判断语句删除，并加一句直接赋值mo = true; 使得判断条件永远为真
 
 
-##【我编译好的版本】
+## 【我编译好的版本】
 
 * **[Binary releases](https://github.com/xinvhost/xmrig-C3/releases/)**
 
@@ -75,7 +75,7 @@ make -j$(nproc)
 完成后可在xmrig-C3/build/看到编译好的 xmrig 文件。
 
 
-##【编译参数】如果有特殊需求，可参考：https://xmrig.com/docs/miner/cmake-options
+## 【编译参数】如果有特殊需求，可参考：https://xmrig.com/docs/miner/cmake-options
 
 
 
