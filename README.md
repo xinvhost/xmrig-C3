@@ -35,7 +35,7 @@ url：矿池或矿池代理的地址和端口，user：xmr钱包地址，pass：
 日志查看 tail -f xmrig-c3.log ,如果改了日志路径和文件名，此处需对应
 
 
-* 如果想自己编译的话以下是【编译步骤】：
+#### 如果想自己编译的话以下是【编译步骤】：
 
 建议在ubuntu16上编译以兼容低版本的系统（兼容性好）
 
@@ -43,7 +43,7 @@ url：矿池或矿池代理的地址和端口，user：xmr钱包地址，pass：
 
 注意：高版本的系统编译的二进制文件可能无法在低版本的系统上运行，另外编译过程中可能会出现报错，到时请根据错误提示进行环境的安装修复即可正常编译
 
-sudo apt install git build-essential cmake automake libtool autoconf
+sudo apt update -y ; install git build-essential cmake automake libtool autoconf
 
 git clone https://github.com/xinvhost/xmrig-C3.git
 
